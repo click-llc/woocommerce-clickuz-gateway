@@ -1,0 +1,200 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Woocommerce Click.Uz Payment Method\n"
+"POT-Creation-Date: 2019-09-26 14:46+0500\n"
+"PO-Revision-Date: 2019-09-26 14:47+0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: ../..\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: wc-clickuz-gateway.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: include/class-wc-gateway-clickuz-handlers.php:102
+#: include/class-wc-gateway-clickuz-handlers.php:212
+msgid "Error in request from click"
+msgstr "Ошибка в запросе от CLICK"
+
+#: include/class-wc-gateway-clickuz-handlers.php:122
+#: include/class-wc-gateway-clickuz-handlers.php:230
+msgid "Sign check error"
+msgstr "Ошибка проверки подписи"
+
+#: include/class-wc-gateway-clickuz-handlers.php:131
+#: include/class-wc-gateway-clickuz-handlers.php:239
+msgid "User does not exist"
+msgstr "Пользователь или заказ не существует"
+
+#: include/class-wc-gateway-clickuz-handlers.php:138
+#: include/class-wc-gateway-clickuz-handlers.php:267
+msgid "Already paid"
+msgstr "Уже оплачено"
+
+#: include/class-wc-gateway-clickuz-handlers.php:145
+#: include/class-wc-gateway-clickuz-handlers.php:253
+msgid "Incorrect parameter amount"
+msgstr "Неверное количество параметров"
+
+#: include/class-wc-gateway-clickuz-handlers.php:181
+msgid "Click Prepare requested, reserving products."
+msgstr "Поступил Prepare запрос от CLICK, зарезервирование продуктов."
+
+#: include/class-wc-gateway-clickuz-handlers.php:188
+#: include/class-wc-gateway-clickuz-handlers.php:324
+msgid "Success"
+msgstr "Успешно"
+
+#: include/class-wc-gateway-clickuz-handlers.php:194
+#: include/class-wc-gateway-clickuz-handlers.php:330
+msgid "Failed to update user"
+msgstr "Ошибка при обновлении пользователя или заказа"
+
+#: include/class-wc-gateway-clickuz-handlers.php:246
+msgid "Transaction does not exist"
+msgstr "Транзакция не существует"
+
+#: include/class-wc-gateway-clickuz-handlers.php:260
+#: include/class-wc-gateway-clickuz-handlers.php:293
+msgid "Transaction cancelled"
+msgstr "Транзакция отменена"
+
+#: include/class-wc-gateway-clickuz.php:33
+msgid "Pay"
+msgstr "Оплатить"
+
+#: include/class-wc-gateway-clickuz.php:35
+msgid "Proceed payment with CLICK"
+msgstr "Оплатить заказ с помощью CLICK"
+
+#: include/class-wc-gateway-clickuz.php:44 include/settings.php:72
+msgid "Pay with CLICK"
+msgstr "Оплатить с помощью CLICK"
+
+#: include/settings.php:13
+msgid "Enable/Disable"
+msgstr "Активировать/Деактивировать"
+
+#: include/settings.php:15
+msgid "Enable pay via CLICK"
+msgstr "Активировать оплату с помощью CLICK"
+
+#: include/settings.php:20
+msgid "API credentials"
+msgstr "API аутентификация"
+
+#: include/settings.php:22
+msgid "Enter your Click.Uz API credentials."
+msgstr "Сюда вводится данные аутентификации полученные от CLICK."
+
+#: include/settings.php:26
+msgid "Merchant ID"
+msgstr "ID Поставщика"
+
+#: include/settings.php:33
+msgid "Merchant User ID"
+msgstr "ID Пользователя Поставщика"
+
+#: include/settings.php:40
+msgid "Merchant Service ID"
+msgstr "ID сервиса поставщика"
+
+#: include/settings.php:47
+msgid "Secret Key"
+msgstr "Секретный ключ"
+
+#: include/settings.php:55
+msgid "Pay button details"
+msgstr "Параметры кнопки оплаты"
+
+#: include/settings.php:60
+msgid "Button type"
+msgstr "Тип кнопки"
+
+#: include/settings.php:64
+msgid "With redirect"
+msgstr "С переходом"
+
+#: include/settings.php:65
+msgid "Without redirect"
+msgstr "Оплата по карте"
+
+#: include/settings.php:70
+msgid "Button title"
+msgstr "Заголовок кнопки"
+
+#: include/settings.php:76
+msgid "After payment details"
+msgstr "После оплаты"
+
+#: include/settings.php:81
+msgid "Status of order after payment"
+msgstr "Изменить статус ордера после оплаты"
+
+#: include/settings.php:88
+msgid "Service parameters"
+msgstr "Параметры сервиса"
+
+#: include/settings.php:90
+msgid "Url addesses for changing to set on Merchant cabinet"
+msgstr "Адреса которые вставляются в кабинете мерчанта"
+
+#: include/settings.php:91
+msgid "Prepare url"
+msgstr "Адрес проверки"
+
+#: include/settings.php:92
+msgid "Complete url"
+msgstr "Адрес результата"
+
+#: wc-clickuz-gateway.php:112
+msgid "Settings"
+msgstr "Настройки"
+
+#. Plugin Name of the plugin/theme
+msgid "Woocommerce CLICK Payment Method"
+msgstr "Метод оплаты Woocommerce CLICK"
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://click.uz"
+msgstr "https://click.uz"
+
+#. Description of the plugin/theme
+msgid "CLICK Payment Method Plugin for WooCommerce"
+msgstr "Плагин добавления метода оплаты с помощью CLICK для Woocommerce"
+
+#. Author of the plugin/theme
+msgid "OOO \"Click\""
+msgstr "OOO \"Click\""
+
+#~ msgid "Оплатить"
+#~ msgstr "Pay"
+
+#, fuzzy
+#~| msgid "Pay with CLICK"
+#~ msgid "Pay With CLICK"
+#~ msgstr "Оплатить с помощью CLICK"
+
+#~ msgid "Продолжить оплату с CLICK"
+#~ msgstr "Proceed payment with CLICK"
+
+#~ msgid "Оплатить с помощью CLICK"
+#~ msgstr "Pay with CLICK"
+
+#~ msgid "Proceed to CLICK"
+#~ msgstr "Оформить"
+
+#~ msgid "Title"
+#~ msgstr "Заголовок"
