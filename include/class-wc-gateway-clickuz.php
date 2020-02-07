@@ -127,8 +127,7 @@ class WC_Gateway_Clickuz extends WC_Payment_Gateway {
 
             ?>
             <form action="https://my.click.uz/services/pay" id="click-pay-form" method="get">
-                <input type="hidden" name="amount" value="<?php echo $transAmount; ?>" class=”click_input”
-                       id=”click_amount_field”/>
+                <input type="hidden" name="amount" value="<?php echo $transAmount; ?>" />
                 <input type="hidden" name="merchant_id" value="<?php echo $merchantID; ?>"/>
                 <input type="hidden" name="merchant_user_id" value="<?php echo $merchantUserID; ?>"/>
                 <input type="hidden" name="service_id" value="<?php echo $merchantServiceID; ?>"/>

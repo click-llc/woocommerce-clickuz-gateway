@@ -48,10 +48,6 @@ class WC_ClickAPI {
 			return;
 		}
 
-		$this->secret = $gateways['clickuz']->get_option( 'secret_key' );
-
-		$this->after_payment_status = $gateways['clickuz']->get_option( 'after_payment_status' );
-
 		if ( ! empty( $_GET['click-api'] ) ) { // WPCS: input var okay, CSRF ok.
 			$wp->query_vars['click-api'] = sanitize_key( wp_unslash( $_GET['click-api'] ) ); // WPCS: input var okay, CSRF ok.
 		}
@@ -60,6 +56,10 @@ class WC_ClickAPI {
 
 			// Clean the API request.
 			$api_request = strtolower( wc_clean( $wp->query_vars['click-api'] ) );
+
+            $this->secret = $gateways['clickuz']->get_option( 'secret_key' );
+
+            $this->after_payment_status = $gateways['clickuz']->get_option( 'after_payment_status' );
 
 			$response = array();
 
