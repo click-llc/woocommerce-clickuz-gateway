@@ -35,7 +35,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
             register_activation_hook( __FILE__, array( $this, 'activate' ) );
 
-            register_deactivation_hook( __FILE__, array( $this, 'deactivate') );
+            register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 
             add_action( 'plugins_loaded', array( $this, 'init' ) );
 
@@ -98,8 +98,8 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
             require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
             dbDelta( "
-				CREATE TABLE `{$wpdb->prefix}wc_click_transactions` (
-					`ID` BIGINT(20)	UNSIGNED NOT NULL AUTO_INCREMENT,			
+                CREATE TABLE `{$wpdb->prefix}wc_click_transactions` (
+                    `ID` BIGINT(20)	UNSIGNED NOT NULL AUTO_INCREMENT,
                     `click_trans_id` BIGINT(20) UNSIGNED NOT NULL,
                     `service_id` BIGINT(20) UNSIGNED NOT NULL,
                     `click_paydoc_id` BIGINT(20) UNSIGNED NOT NULL,
