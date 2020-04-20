@@ -92,9 +92,9 @@ class WC_Gateway_Clickuz extends WC_Payment_Gateway {
         return array(
             'result'   => 'success',
             'redirect' => add_query_arg(
-                'order',
+                'order_pay',
                 $order->get_id(),
-                add_query_arg( 'key', $order->get_order_key(), wc_get_page_permalink( 'pay' ) )
+                add_query_arg( 'key', $order->get_order_key(), $order->get_checkout_payment_url(true) )
             )
         );
     }

@@ -57,7 +57,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
         public function wc_init() {
 
             if ( isset( $_GET['click-return'] ) && $_GET['click-return'] == WC()->customer->get_id() ) {
-                wc_empty_cart();
+                WC()->cart->empty_cart( true );
             }
         }
 
