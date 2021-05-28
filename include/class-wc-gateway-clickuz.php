@@ -40,18 +40,25 @@ class WC_Gateway_Clickuz extends WC_Payment_Gateway {
         $this->init_settings();
 
         // Define user set variables.
-        $this->title       = is_admin() ? 'CLICK' : '<img src="' . CLICK_LOGO . '" alt="Click" style="width: auto; height: 30px;" />';
+        $this->title       = 'CLICK';
         $this->description = __( 'Pay with CLICK', 'clickuz' );
         $this->testmode    = 'yes' === $this->get_option( 'testmode', 'no' );
         $this->debug       = 'yes' === $this->get_option( 'debug', 'no' );
 
         self::$log_enabled = true;
 
-        add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array(
-            $this,
-            'process_admin_options'
-        ) );
+        add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options') );
         add_action( 'woocommerce_receipt_' . $this->id, array( $this, 'form' ) );
+    }
+
+    /**
+     * Get gateway icon.
+     *
+     * @return string
+     */
+    public function get_icon() {
+        $icon_html = '<img src="' . CLICK_LOGO . '" alt="CLICK" />';
+        return apply_filters( 'woocommerce_gateway_icon', $icon_html, $this->id );
     }
 
     /**
@@ -88,13 +95,22 @@ class WC_Gateway_Clickuz extends WC_Payment_Gateway {
     public function process_payment( $order_id ) {
         $order = new WC_Order( $order_id );
 
-        //wc_empty_cart();
+        $order_number      = $order->get_order_number();
+        $query_args = array(
+            'merchant_id' => defined('CLICK_MERCHANT_ID') && ! empty(CLICK_MERCHANT_ID) ? CLICK_MERCHANT_ID : $this->get_option( 'merchant_id' ),
+            'merchant_user_id' => defined('CLICK_MERCHANT_USER_ID') && ! empty(CLICK_MERCHANT_USER_ID) ? CLICK_MERCHANT_USER_ID :$this->get_option( 'merchant_user_id' ),
+            'service_id' => defined('CLICK_SERVICE_ID') && ! empty(CLICK_SERVICE_ID) ? CLICK_SERVICE_ID :$this->get_option( 'merchant_service_id' ),
+            'transaction_param' =>  $order_id != $order_number ? $order_number . CLICK_DELIMITER . $order_id : $order_id,
+            'amount' =>  number_format( $order->get_total(), 0, '.', '' ),
+            'return_url' =>  apply_filters( 'click_return_url', add_query_arg( array( 'click-return' => WC()->customer->get_id() ), $order->get_view_order_url() ) )
+        );;
+
         return array(
             'result'   => 'success',
             'redirect' => add_query_arg(
                 'order_pay',
                 $order->get_id(),
-                add_query_arg( 'key', $order->get_order_key(), $order->get_checkout_payment_url(true) )
+                add_query_arg( $query_args, 'https://my.click.uz/services/pay' )
             )
         );
     }
@@ -108,15 +124,24 @@ class WC_Gateway_Clickuz extends WC_Payment_Gateway {
         return $order && $order->get_transaction_id();
     }
 
+    /**
+     * Processes and saves options.
+     * If there is an error thrown, will continue to save and validate fields, but will leave the erroring field out.
+     *
+     * @return bool was anything saved?
+     */
+    public function process_admin_options() {
+        return parent::process_admin_options();
+    }
 
     public function form( $order_id ) {
 
         $order = wc_get_order( $order_id );
 
         $order_number      = $order->get_order_number();
-        $merchantID        = $this->get_option( 'merchant_id' );
-        $merchantUserID    = $this->get_option( 'merchant_user_id' );
-        $merchantServiceID = $this->get_option( 'merchant_service_id' );
+        $merchantID        = defined('CLICK_MERHCANT_ID') ? CLICK_MERCHANT_ID : $this->get_option( 'merchant_id' );
+        $merchantUserID    = defined('CLICK_MERHCANT_USER_ID') ? CLICK_MERCHANT_USER_ID :$this->get_option( 'merchant_user_id' );
+        $merchantServiceID = defined('CLICK_SERVICE_ID') ? CLICK_SERVICE_ID :$this->get_option( 'merchant_service_id' );
         $transID           = $order_id != $order_number ? $order_number . CLICK_DELIMITER . $order_id : $order_id;
         $transAmount       = number_format( $order->get_total(), 0, '.', '' );
         $returnURL         = apply_filters( 'click_return_url', add_query_arg( array( 'click-return' => WC()->customer->get_id() ), $order->get_view_order_url() ) );

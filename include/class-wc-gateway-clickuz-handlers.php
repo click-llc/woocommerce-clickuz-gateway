@@ -57,7 +57,7 @@ class WC_ClickAPI {
 			// Clean the API request.
 			$api_request = strtolower( wc_clean( $wp->query_vars['click-api'] ) );
 
-            $this->secret = $gateways['clickuz']->get_option( 'secret_key' );
+            $this->secret = defined('CLICK_SECRET_KEY') ? CLICK_SECRET_KEY : $gateways['clickuz']->get_option( 'secret_key' );
 
             $this->after_payment_status = $gateways['clickuz']->get_option( 'after_payment_status' );
 

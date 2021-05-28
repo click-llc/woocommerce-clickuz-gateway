@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly
 
-define( 'CLICK_VERSION', '1.0.5' );
+define( 'CLICK_VERSION', '1.0.6' );
 
 define( 'CLICK_LOGO', plugin_dir_url( __FILE__ ) . 'click-logo.png' );
 
@@ -129,6 +129,4 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
     }
 
     new WC_ClickUz();
-
-
 }

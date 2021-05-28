@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Settings for PayPal Gateway.
+ * Settings.
  */
 return array(
 
@@ -25,28 +25,28 @@ return array(
     'merchant_id' => array(
         'title'    => __( 'Merchant ID', 'clickuz' ),
         'type'     => 'text',
-        'default'  => '',
+        'default'  => '12862',
         'desc_tip' => true,
     ),
 
     'merchant_user_id' => array(
         'title'    => __( 'Merchant User ID', 'clickuz' ),
         'type'     => 'text',
-        'default'  => '',
+        'default'  => '19620',
         'desc_tip' => true,
     ),
 
     'merchant_service_id' => array(
         'title'    => __( 'Merchant Service ID', 'clickuz' ),
         'type'     => 'text',
-        'default'  => '',
+        'default'  => '17768',
         'desc_tip' => true,
     ),
 
     'secret_key' => array(
         'title'    => __( 'Secret Key', 'clickuz' ),
         'type'     => 'text',
-        'default'  => '',
+        'default'  => 'krTxqZmcJ9Q',
         'desc_tip' => true,
     ),
 
