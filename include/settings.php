@@ -25,28 +25,28 @@ return array(
     'merchant_id' => array(
         'title'    => __( 'Merchant ID', 'clickuz' ),
         'type'     => 'text',
-        'default'  => '12862',
+        'default'  => '',
         'desc_tip' => true,
     ),
 
     'merchant_user_id' => array(
         'title'    => __( 'Merchant User ID', 'clickuz' ),
         'type'     => 'text',
-        'default'  => '19620',
+        'default'  => '',
         'desc_tip' => true,
     ),
 
     'merchant_service_id' => array(
         'title'    => __( 'Merchant Service ID', 'clickuz' ),
         'type'     => 'text',
-        'default'  => '17768',
+        'default'  => '',
         'desc_tip' => true,
     ),
 
     'secret_key' => array(
         'title'    => __( 'Secret Key', 'clickuz' ),
         'type'     => 'text',
-        'default'  => 'krTxqZmcJ9Q',
+        'default'  => '',
         'desc_tip' => true,
     ),
 
