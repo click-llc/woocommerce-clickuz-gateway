@@ -37,13 +37,18 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
             register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 
-            add_action( 'plugins_loaded', array( $this, 'init' ) );
+            add_action( 'plugins_loaded', array( $this, 'init' ), 0 );
 
             add_filter( "plugin_action_links_{$this->plugin}", array( $this, 'settings_link' ) );
 
             add_action( 'woocommerce_init', array( $this, 'wc_init' ) );
 
             add_filter( 'woocommerce_payment_gateways', array( $this, 'add_gateway' ) );
+
+            add_action( 'before_woocommerce_init', array( $this, 'declare_cart_checkout_blocks_compatibility'));
+
+            add_action( 'woocommerce_blocks_loaded', array( $this, 'register_order_approval_payment_method_type'));
+
         }
 
         public function init() {
@@ -124,6 +129,31 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
             $methods[] = 'WC_Gateway_Clickuz';
 
             return $methods;
+        }
+
+        function declare_cart_checkout_blocks_compatibility() {
+            // Check if the required class exists
+            if (class_exists('\Automattic\WooCommerce\Utilities\FeaturesUtil')) {
+                // Declare compatibility for 'cart_checkout_blocks'
+                \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('cart_checkout_blocks', __FILE__, true);
+            }
+        }
+
+        function register_order_approval_payment_method_type() {
+            // Check if the required class exists
+            if ( ! class_exists( 'Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodType' ) ) {
+                return;
+            }
+            // Include the custom Blocks Checkout class
+            require_once plugin_dir_path(__FILE__) . '/integrations/blocks/class-block.php';
+            // Hook the registration function to the 'woocommerce_blocks_payment_method_type_registration' action
+            add_action(
+                'woocommerce_blocks_payment_method_type_registration',
+                function( Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry $payment_method_registry ) {
+                    // Register an instance of My_Custom_Gateway_Blocks
+                    $payment_method_registry->register( new WC_Clickuz_Gateway_Blocks );
+                }
+            );
         }
 
     }
