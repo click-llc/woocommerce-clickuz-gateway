@@ -11,6 +11,9 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 == Changelog ==
 
 
+= 1.1.1 - 2024-08-20 =
+* Fix - Исправлен название кнопки в блоке Woocommerce.
+
 = 1.1.0 - 2024-08-20 =
 * Feature - Добавлен поддержка блоков Woocommerce.
 

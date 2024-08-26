@@ -1,6 +1,6 @@
 function registerClickPaymentMethod () {
     const settings = window.wc.wcSettings.getSetting( 'clickuz_data', {} )
-    const label = window.wp.htmlEntities.decodeEntities( settings.title ) || window.wp.i18n.__( 'Click', 'clickuz' );
+    const label = window.clickuz_settings.title || window.wp.htmlEntities.decodeEntities( settings.title );
     const Content = () => {
         return window.wp.htmlEntities.decodeEntities( settings.description || '' );
     };
